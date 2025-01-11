@@ -6,6 +6,16 @@ class FileConverter:
         self.inputPath = argList[2]
         self.outputPath = argList[3]
 
+    def validation(self, argList):
+        if len(argList) != 4:
+            raise ValueError("invalid argument")
+        if type(argList[1]) is not str:
+            raise TypeError("command must be str")
+        if type(argList[2]) is not str:
+            raise TypeError("inputPath must be str")
+        if type(argList[3]) is not str:
+            raise TypeError("outputPath must be str")
+
     def readContent(self):
         with open(self.inputPath, "r") as f:
             return f.read()
@@ -16,4 +26,4 @@ class FileConverter:
             f.write(html)
 
     def execute(self):
-      self.convertMarkdownToHtml(self.readContent())
+        self.convertMarkdownToHtml(self.readContent())
